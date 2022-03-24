@@ -2,7 +2,7 @@ import React from 'react'
 
 const Button = ({choice, handleClick}) => {
   return (
-    <button onClick={() => handleClick(choice)}>{choice}</button>
+    <button onClick={() => this.handleClick(choice)}>{choice}</button>
   )
 }
 
