@@ -1,6 +1,12 @@
 import React, { useEffect, Component } from 'react'
-import Button from './Button';
+import './../styles.css'
+import spock from '../assets/spock.png';
+import scissors from '../assets/scissors.png';
+import rock from '../assets/rock.png';
+import paper from '../assets/paper.png';
+import lizard from '../assets/lizard.png';
 
+ 
 class RPSLS extends Component {
   
     state = { 
@@ -91,22 +97,51 @@ class RPSLS extends Component {
     render(){
         return (
             <React.Fragment>
-                <h1>User choice is: {this.state.userChoice}</h1>
-                <button onClick={() => this.handleClick('rock')}>Rock</button>
-                <button onClick={() => this.handleClick('paper')}>Paper</button>
-                <button onClick={() => this.handleClick('scissors')}>Scissors</button>
-                <button onClick={() => this.handleClick('lizard')}>Lizard</button>
-                <button onClick={() => this.handleClick('spock')}>Spock</button>
+              <div class="row">
+                <div class="col s12">
+                  <h3 className ="result-text">{this.state.result}</h3>   
+  
+                </div>
+                <div className="col s6 user">
+                  <div className="user-score">
+                    <h4 >Your Score: {this.state.your_score}</h4>
+                  </div>
+                  <h4 className="user-choice">Your choice is: {this.state.userChoice}</h4>                   
+                </div>
+                <div class="col s6 ai">
+                  <h4 className="ai-score">AI Score: {this.state.ai_score}</h4>
+                  <h4 className="ai-choice">Computer choice is: {this.state.setComputerChoice}</h4>                 
+                </div>
+             </div>
+              
+              <div className="row button-set">           
+                <button className ='button' onClick={() => this.handleClick('rock')}>
+                  <img src={rock} alt="" class="circle responsive-img"> 
+                  </img>      
+                </button>           
+                <button className ='button' onClick={() => this.handleClick('paper')}>
+                  <img src={paper} alt="" class="circle responsive-img"> 
+                  </img>    
+                  </button>             
+                <button className ='button' onClick={() => this.handleClick('scissors')}>
+                <img src={scissors} alt="" class="circle responsive-img"> 
+                  </img>    
+                  </button>      
+                <button className ='button' onClick={() => this.handleClick('lizard')}>
+                  <img src={lizard} alt="" class="circle responsive-img"> 
+                  </img>    
+                </button>     
+                <button  className ='button' onClick={() => this.handleClick('spock')}>  
+                  <img src={spock} alt="" class="circle responsive-img"> 
+                  </img>    
+                </button>
+              </div>
 
-                <button onClick={() => this.handleResult()} >Result</button>
-                <h1>Computer choice is: {this.state.setComputerChoice}</h1>
-                <h1>Your Score</h1>
-                <h3>{this.state.your_score}</h3>
-                <h1>AI Score</h1>
-                <h3>{this.state.ai_score}</h3>
-
-                <h1>{this.state.result}</h1>   
-                
+              <div className='row'>
+                <div className="result-button-container">
+                  <button className = 'result-button' onClick={() => this.handleResult()} >Result</button>               
+                </div>
+              </div>
             </React.Fragment>
         );
         
