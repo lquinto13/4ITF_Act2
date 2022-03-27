@@ -1,4 +1,4 @@
-import React, { useEffect, Component } from 'react'
+import React, {Component } from 'react'
 import './../styles.css'
 import spock from '../assets/spock.png';
 import scissors from '../assets/scissors.png';
@@ -14,6 +14,7 @@ class RPSLS extends Component {
         ai_score: 0,
         choices: ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock'],
         imgChoices: [rock, paper, scissors, lizard, spock],
+        color:'',
         userChoice:'',
         action:'',
         setImgAI:null,
@@ -21,6 +22,7 @@ class RPSLS extends Component {
         img : null,
         result: '',
         computerChoice:'',
+        setUserChoice:'',
         setComputerChoice: '',
         count:0, 
         useCounter: 0
@@ -35,6 +37,7 @@ class RPSLS extends Component {
         let randomImgChoice = imgChoices[Math.floor(choice * imgChoices.length)]
         this.setState({computerChoice: randomChoice})   
         this.setState({setImgAI: randomImgChoice})   
+        
 
 
     }
@@ -42,21 +45,24 @@ class RPSLS extends Component {
     handleClick = (value, imgVal) => {
         this.setState({userChoice: value});
         this.generateComputerChoice();
+        
         this.setState({img: imgVal})
         
     }
     
     handleResult = () =>{
-        this.checkResult(); 
         this.setState({setComputerChoice: this.state.computerChoice})
+        this.setState({setUserChoice: this.state.userChoice})
+        this.checkResult(); 
+        this.checkAction();
         this.setState({imgAI : this.state.setImgAI})
+      
 
        
 
     }
     
     checkResult = () => {
-      let {result} = this.state;
       let {userChoice} = this.state;
       let {computerChoice} = this.state;
 
@@ -98,6 +104,148 @@ class RPSLS extends Component {
             break
         }
       }
+      checkAction = () =>{
+        let {userChoice} = this.state;
+        let {computerChoice} = this.state;
+        
+        if(userChoice === computerChoice)
+        {
+          this.setState({setUserChoice:""})
+          this.setState({setComputerChoice:""})
+          this.setState({action:"User and AI chose the same"})
+        }
+        
+        if(userChoice === "Rock")
+        {
+          if(computerChoice === "Paper")
+          {
+            this.setState({action:'Gets Covered by'})
+            this.setState({color:'#ea3e18'})
+
+          }
+          else if(computerChoice === "Scissors")
+          {
+            this.setState({action:'Beats'})
+            this.setState({color:'#265d7c'})
+
+          }
+          else if(computerChoice === "Lizard")
+          {
+            this.setState({action:'Smashes'})
+            this.setState({color:'#265d7c'})
+
+          }
+          else if(computerChoice === "Spock")
+          {
+            this.setState({action:'Gets Obliterated By'})
+            this.setState({color:'#ea3e18'})
+
+          }
+        }else  if(userChoice === "Paper"){
+          if(computerChoice === "Rock")
+          {
+            this.setState({action:'Covers'})
+            this.setState({color:'#265d7c'})
+
+          }
+          else if(computerChoice === "Scissors")
+          {
+            this.setState({action:'Gets Cut by'})
+            this.setState({color:'#ea3e18'})
+
+          }
+          else if(computerChoice === "Lizard")
+          {
+            this.setState({action:'Gets Eaten by'})
+            this.setState({color:'#ea3e18'})
+
+          }
+          else if(computerChoice === "Spock")
+          {
+            this.setState({action:'Disproves'})
+            this.setState({color:'#265d7c'})
+
+          }
+        }else  if(userChoice === "Scissors"){
+          if(computerChoice === "Rock")
+          {
+            this.setState({action:'Gets Beat By'})
+            this.setState({color:'#ea3e18'})
+
+          }
+          else if(computerChoice === "Paper")
+          {
+            this.setState({action:'Cuts'})
+            this.setState({color:'#265d7c'})
+
+          }
+          else if(computerChoice === "Lizard")
+          {
+            this.setState({action:'Decapitates'})
+            this.setState({color:'#265d7c'})
+
+          }
+          else if(computerChoice === "Spock")
+          {
+            this.setState({action:'Gets Smashed By'})
+            this.setState({color:'#ea3e18'})
+
+          }
+        }else  if(userChoice === "Lizard"){
+          if(computerChoice === "Rock")
+          {
+            this.setState({action:'Gets Smashed By'})
+            this.setState({color:'#ea3e18'})
+
+          }
+          else if(computerChoice === "Paper")
+          {
+            this.setState({action:'Eats'})
+            this.setState({color:'#265d7c'})
+
+          }
+          else if(computerChoice === "Scissors")
+          {
+            this.setState({action:'Gets Decapitated By'})
+            this.setState({color:'#ea3e18'})
+
+          }
+          else if(computerChoice === "Spock")
+          {
+            this.setState({action:'Poisons'})
+            this.setState({color:'#265d7c'})
+
+          }
+        }else  if(userChoice === "Spock"){
+          if(computerChoice === "Rock")
+          {
+            this.setState({action:'Obliterates'})
+            this.setState({color:'#265d7c'})
+
+          }
+          else if(computerChoice === "Paper")
+          {
+            this.setState({action:'Gets Disproved By'})
+            this.setState({color:'#ea3e18'})
+
+          }
+          else if(computerChoice === "Scissors")
+          {
+            this.setState({action:'Smashes'})
+            this.setState({color:'#265d7c'})
+
+          }
+          else if(computerChoice === "Lizard")
+          {
+            this.setState({action:'Gets Poisoned By'})
+            this.setState({color:'#ea3e18'})
+
+          }
+        }
+     
+      }
+      
+      
 
       printMsg(){
         this.checkResult()
@@ -120,7 +268,7 @@ class RPSLS extends Component {
                         <span style={{color: "#265d7c"}}>{this.state.your_score}</span>
                     </h4>
                   </div>
-                  <h4 className="user-choice-lable" style={{color: "#265d7c"}}>{this.state.userChoice}</h4>        
+                  <h4 className="user-choice-lable" style={{color: '#265d7c'}}>{this.state.userChoice}</h4>        
 
                     <h4 className="user-choice">     
                         <img src={this.state.img} alt="" class="circle responsive-img"> 
@@ -138,10 +286,10 @@ class RPSLS extends Component {
                     </span>
                     
                   </h1>
-                  <h1>
-                  {this.state.userChoice} {this.state.action} {this.state.computerChoice}
+                  <h3 className='action' style={{color:this.state.color}}>
+                  {this.state.setUserChoice} {this.state.action} {this.state.setComputerChoice}
 
-                  </h1>
+                  </h3>
 
                 </div>
 
