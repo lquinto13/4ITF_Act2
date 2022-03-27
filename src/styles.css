@@ -3,8 +3,11 @@ html, body {
     height:100%;
     background-color: #131718    ;
     color: white    ;
+    font-family: 'Anton', sans-serif;
   }
-
+.user-container{
+    padding-top: 10%;
+}
 .user-score{
     display: flex;
     justify-content: center;   
@@ -13,8 +16,18 @@ html, body {
 .user-choice{
     display: flex;
     justify-content: center;   
-    padding-top: 20%; }
+}
 
+.user-choice-lable{
+    display: flex;
+    justify-content: center;    
+}
+
+.versus{
+    display: flex;
+    justify-content: center;   
+    
+}
 
 .ai-score{
     display: flex;
@@ -23,7 +36,6 @@ html, body {
 .ai-choice{
     display: flex;
     justify-content: center;   
-    padding-top: 20%;    
 }
 .result-text{
     display: flex;
@@ -34,8 +46,8 @@ html, body {
     display: flex;
     -webkit-justify-content: space-between;
     justify-content: space-between;
-    width: 160px;
-    height: 160px;
+    width: 150px;
+    height: 150px;
     background-color: white;
     border: none;
     color: white;
@@ -44,7 +56,9 @@ html, body {
     display: inline-block;
     font-size: 16px;
     border-radius: 50%;
-    margin: 100px 120px 0px 100px ;
+    margin: 100px 130px 20px 100px ;
+    cursor: pointer;
+
   }
 
   .result-button-container{
@@ -57,10 +71,26 @@ html, body {
     height: 50px;
     background-color: white;
     border-radius: 20%;
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
  }
 
- .result-button:active{
-    background-color: gray;
+ .result-button:focus{
+    background-color: white;
 
 
  }
+
+  .button:focus{
+    
+    background-color: white;
+
+ }
+ 

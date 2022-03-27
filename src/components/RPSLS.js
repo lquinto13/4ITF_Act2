@@ -12,8 +12,13 @@ class RPSLS extends Component {
     state = { 
         your_score: 0,
         ai_score: 0,
-        choices: ['rock', 'paper', 'scissors', 'lizard', 'spock'],
+        choices: ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock'],
+        imgChoices: [rock, paper, scissors, lizard, spock],
         userChoice:'',
+        action:'',
+        setImgAI:null,
+        imgAI:null,
+        img : null,
         result: '',
         computerChoice:'',
         setComputerChoice: '',
@@ -23,20 +28,29 @@ class RPSLS extends Component {
 
 
     generateComputerChoice = () =>{
+        let {imgChoices} = this.state;
         let {choices} = this.state;
-        let randomChoice = choices[Math.floor(Math.random() * choices.length)]
+        let choice = Math.random()
+        let randomChoice = choices[Math.floor(choice * choices.length)]
+        let randomImgChoice = imgChoices[Math.floor(choice * imgChoices.length)]
         this.setState({computerChoice: randomChoice})   
+        this.setState({setImgAI: randomImgChoice})   
+
+
     }
 
-    handleClick = (value) => {
+    handleClick = (value, imgVal) => {
         this.setState({userChoice: value});
         this.generateComputerChoice();
+        this.setState({img: imgVal})
         
     }
     
     handleResult = () =>{
         this.checkResult(); 
         this.setState({setComputerChoice: this.state.computerChoice})
+        this.setState({imgAI : this.state.setImgAI})
+
        
 
     }
@@ -47,46 +61,42 @@ class RPSLS extends Component {
       let {computerChoice} = this.state;
 
         switch(userChoice+computerChoice){
-          case 'rocklizard':
-          case 'rockscissors':
-          case 'lizardpaper':
-          case 'lizardspock':
-          case 'spockrock':
-          case 'spockscissors':
-          case 'scissorslizard':
-          case 'scissorspaper':
-          case 'paperrock':
-          case 'paperspock':
+          case 'RockLizard':
+          case 'RockScissors':
+          case 'LizardPaper':
+          case 'LizardSpock':
+          case 'SpockRock':
+          case 'SpockScissors':
+          case 'ScissorsLizard':
+          case 'ScissorsPaper':
+          case 'PaperRock':
+          case 'PaperSpock':
             this.state.result = "You Won!";
             this.state.your_score++;
             this.setState({result:"You Won!"})
             break
-          case 'paperscissors':
-          case 'paperlizard':
-          case 'rockpaper':
-          case 'rockspock':
-          case 'lizardrock':
-          case 'lizardscissors':
-          case 'spocklizard':
-          case 'spockpaper':
-          case 'scissorsspock':
-          case 'scissorsrock':
+          case 'PaperScissors':
+          case 'PaperLizard':
+          case 'RockPaper':
+          case 'RockSpock':
+          case 'LizardRock':
+          case 'LizardScissors':
+          case 'SpockLizard':
+          case 'SpockPaper':
+          case 'ScissorsSpock':
+          case 'ScissorsRock':
             this.state.ai_score++;
             this.setState({result:"You Lost!"})
 
             break
-          case 'rockrock':
-          case 'spockspock':
-          case 'lizardlizard':
-          case 'scissorsscissors':
-          case 'paperpaper':
+          case 'RockRock':
+          case 'SpockSpock':
+          case 'LizardLizard':
+          case 'Scissorsscissors':
+          case 'PaperPaper':
             this.setState({result:"Draw!"})
             break
-      
-
         }
-        console.log(result)
-
       }
 
       printMsg(){
@@ -102,37 +112,77 @@ class RPSLS extends Component {
                   <h3 className ="result-text">{this.state.result}</h3>   
   
                 </div>
-                <div className="col s6 user">
+                <div className="col s4 user">
                   <div className="user-score">
-                    <h4 >Your Score: {this.state.your_score}</h4>
+                    <h4>  
+                        <span style={{color: "#265d7c"}}>Your</span> 
+                        <span style={{color: "#ea3e18"}}> Score: </span> 
+                        <span style={{color: "#265d7c"}}>{this.state.your_score}</span>
+                    </h4>
                   </div>
-                  <h4 className="user-choice">Your choice is: {this.state.userChoice}</h4>                   
+                  <h4 className="user-choice-lable" style={{color: "#265d7c"}}>{this.state.userChoice}</h4>        
+
+                    <h4 className="user-choice">     
+                        <img src={this.state.img} alt="" class="circle responsive-img"> 
+                      </img>
+                    </h4>  
+                                   
                 </div>
-                <div class="col s6 ai">
-                  <h4 className="ai-score">AI Score: {this.state.ai_score}</h4>
-                  <h4 className="ai-choice">Computer choice is: {this.state.setComputerChoice}</h4>                 
+                <div class="col s4 VS">
+                  <h1 className='versus'>
+                    <span style={{color: "#265d7c"}}>
+                    V
+                    </span > 
+                    <span style={{color: "#ea3e18"}}> 
+                    S
+                    </span>
+                    
+                  </h1>
+                  <h1>
+                  {this.state.userChoice} {this.state.action} {this.state.computerChoice}
+
+                  </h1>
+
+                </div>
+
+                <div class="col s4 ai">
+                  <h4 className="ai-score">
+                      <span style={{color: "#265d7c"}}>AI 
+                        <span style={{color: "#ea3e18"}}> Score: </span>  
+                        <span style={{color: "#265d7c"}}> 
+                          {this.state.ai_score}
+                        </span>
+                      </span>   
+                      
+                  </h4>
+                  <h4 className="user-choice-lable" style={{color: "#ea3e18"}}>{this.state.setComputerChoice}</h4>        
+
+                  <h4 className="ai-choice">
+                  <img src={this.state.imgAI} alt="" class="circle responsive-img"> 
+                  </img>
+                  </h4>                 
                 </div>
              </div>
               
               <div className="row button-set">           
-                <button className ='button' onClick={() => this.handleClick('rock')}>
+                <button className ='button' onClick={() => this.handleClick('Rock', rock)}>
                   <img src={rock} alt="" class="circle responsive-img"> 
                   </img>      
                 </button>           
-                <button className ='button' onClick={() => this.handleClick('paper')}>
+                <button className ='button' onClick={() => this.handleClick('Paper', paper)}>
                   <img src={paper} alt="" class="circle responsive-img"> 
                   </img>    
                   </button>             
-                <button className ='button' onClick={() => this.handleClick('scissors')}>
+                <button className ='button' onClick={() => this.handleClick('Scissors', scissors)}>
                 <img src={scissors} alt="" class="circle responsive-img"> 
                   </img>    
                   </button>      
-                <button className ='button' onClick={() => this.handleClick('lizard')}>
+                <button className ='button' onClick={() => this.handleClick('Lizard', lizard)}>
                   <img src={lizard} alt="" class="circle responsive-img"> 
                   </img>    
                 </button>     
-                <button  className ='button' onClick={() => this.handleClick('spock')}>  
-                  <img src={spock} alt="" class="circle responsive-img"> 
+                <button  className ='button' onClick={() => this.handleClick('Spock', spock)}>  
+                  <img src={spock} alt="" className="circle responsive-img"> 
                   </img>    
                 </button>
               </div>
