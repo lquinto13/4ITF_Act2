@@ -112,6 +112,7 @@ class RPSLS extends Component {
         {
           this.setState({setUserChoice:""})
           this.setState({setComputerChoice:""})
+          this.setState({color:'white'})
           this.setState({action:"User and AI chose the same"})
         }
         
