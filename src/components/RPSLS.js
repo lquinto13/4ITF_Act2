@@ -1,12 +1,14 @@
-import React, { Fragment, Component, useState } from 'react'
+import React, { Component } from 'react'
 import './../styles.css'
 import spock from '../assets/spock.png';
 import scissors from '../assets/scissors.png';
 import rock from '../assets/rock.png';
 import paper from '../assets/paper.png';
 import lizard from '../assets/lizard.png';
-import { Container, Button } from 'react-bootstrap'
-import Modal from 'react-bootstrap/Modal'
+import { Container, Row, Col } from 'react-bootstrap'
+
+
+
 
 class RPSLS extends Component {
 
@@ -229,16 +231,16 @@ class RPSLS extends Component {
     this.checkResult()
   }
 
-
-
   render() {
     return (
       <React.Fragment>
         <div class="row">
+          <Row>
           <div class="col s12">
             <h3 className="result-text">{this.state.result}</h3>
-
           </div>
+          </Row>
+
           <div className="col s4 user">
             <div className="user-score">
               <h4>
@@ -291,38 +293,38 @@ class RPSLS extends Component {
           </div>
         </div>
 
-        <Container fluid>
+        <div style={{position: "fixed", bottom: "3%", width:"100%"}}fluid>
           <div style={{ display: "grid", gridTemplateColumns: "20% 20% 20% 20% 20%" }}>
 
-            <div style={{ display: "block", marginLeft: "auto", marginRight: "auto" }}>
+            <div style={{ display: "block", marginLeft: "auto", marginRight: "auto"}}>
               <button className='button' onClick={() => this.handleClick('Rock', rock)}>
                 <img src={rock} alt="" class="circle responsive-img">
                 </img>
               </button>
             </div>
 
-            <div style={{ display: "block", marginLeft: "auto", marginRight: "auto" }}>
+            <div style={{ display: "block", marginLeft: "auto", marginRight: "auto"}}>
               <button className='button' onClick={() => this.handleClick('Paper', paper)}>
                 <img src={paper} alt="" class="circle responsive-img">
                 </img>
               </button>
             </div>
 
-            <div style={{ display: "block", marginLeft: "auto", marginRight: "auto" }}>
+            <div style={{ display: "block", marginLeft: "auto", marginRight: "auto"}}>
               <button className='button' onClick={() => this.handleClick('Scissors', scissors)}>
                 <img src={scissors} alt="" class="circle responsive-img">
                 </img>
               </button>
             </div>
 
-            <div style={{ display: "block", marginLeft: "auto", marginRight: "auto" }}>
+            <div style={{ display: "block", marginLeft: "auto", marginRight: "auto"}}>
               <button className='button' onClick={() => this.handleClick('Lizard', lizard)}>
                 <img src={lizard} alt="" class="circle responsive-img">
                 </img>
               </button>
             </div>
 
-            <div style={{ display: "block", marginLeft: "auto", marginRight: "auto" }}>
+            <div style={{ display: "block", marginLeft: "auto", marginRight: "auto"}}>
               <button className='button' onClick={() => this.handleClick('Spock', spock)}>
                 <img src={spock} alt="" class="circle responsive-img">
                 </img>
@@ -331,14 +333,19 @@ class RPSLS extends Component {
 
 
           </div>
-        </Container>
 
-
-        <div className='row' style={{ marginTop: "100px" }}>
+          <div className='row' style={{marginTop: "100px"}}>
           <div className="result-button-container">
             <button className='result-button' onClick={() => this.handleResult()} >Result</button>
           </div>
         </div>
+
+        </div>
+
+
+        
+
+        
 
 
 
