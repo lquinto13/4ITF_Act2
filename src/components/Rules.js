@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Modal, Button } from 'react-bootstrap'
 
 function MyVerticallyCenteredModal(props) {
@@ -18,7 +18,7 @@ function MyVerticallyCenteredModal(props) {
             </Modal.Header>
             <Modal.Body>
                 <center>
-                    <img height="600px" width="600px" src="https://lh6.googleusercontent.com/-Icbucqm33II/TX_n72oLQSI/AAAAAAAAAdo/mS24jzqwpAs/s1600/IMGP7697+big+bang+tshirt+01.jpg" />
+                    <img height="600px" width="600px" src="https://lh6.googleusercontent.com/-Icbucqm33II/TX_n72oLQSI/AAAAAAAAAdo/mS24jzqwpAs/s1600/IMGP7697+big+bang+tshirt+01.jpg" alt = "rules"/>
                     <ul>
                         <li></li>
                     </ul>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import RPSLS from './components/RPSLS';
 import Rules from './components/Rules';
 import 'materialize-css/dist/css/materialize.min.css';

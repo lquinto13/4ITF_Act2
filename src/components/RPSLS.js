@@ -5,7 +5,7 @@ import scissors from '../assets/scissors.png';
 import rock from '../assets/rock.png';
 import paper from '../assets/paper.png';
 import lizard from '../assets/lizard.png';
-import { Container, Row, Col } from 'react-bootstrap'
+import {Row } from 'react-bootstrap'
 
 
 
@@ -24,6 +24,7 @@ class RPSLS extends Component {
     imgAI: null,
     img: null,
     result: '',
+    resultColor: '',
     computerChoice: '',
     setUserChoice: '',
     setComputerChoice: '',
@@ -81,7 +82,7 @@ class RPSLS extends Component {
       case 'PaperSpock':
         this.state.result = "You Won!";
         this.state.your_score++;
-        this.setState({ result: "You Won!" })
+        this.setState({ result: "You Won!", resultColor: '#265d7c' })
         break
       case 'PaperScissors':
       case 'PaperLizard':
@@ -94,7 +95,8 @@ class RPSLS extends Component {
       case 'ScissorsSpock':
       case 'ScissorsRock':
         this.state.ai_score++;
-        this.setState({ result: "You Lost!" })
+        this.setState({ result: "You Lost!", resultColor: '#ea3e18'})
+
 
         break
       case 'RockRock':
@@ -102,7 +104,7 @@ class RPSLS extends Component {
       case 'LizardLizard':
       case 'Scissorsscissors':
       case 'PaperPaper':
-        this.setState({ result: "Draw!" })
+        this.setState({ result: "Draw!", resultColor:'white' })
         break
     }
   }
@@ -237,16 +239,14 @@ class RPSLS extends Component {
         <div class="row">
           <Row>
           <div class="col s12">
-            <h3 className="result-text">{this.state.result}</h3>
+            <h3 className="result-text" style={{ color: this.state.resultColor }}>{this.state.result}</h3>
           </div>
           </Row>
 
           <div className="col s4 user">
             <div className="user-score">
               <h4>
-                <span style={{ color: "#265d7c" }}>Your</span>
-                <span style={{ color: "#ea3e18" }}> Score: </span>
-                <span style={{ color: "#265d7c" }}>{this.state.your_score}</span>
+                <span style={{ color: "#265d7c" }}>Your Score: {this.state.your_score}</span>
               </h4>
             </div>
             <h4 className="user-choice-lable" style={{ color: '#265d7c' }}>{this.state.userChoice}</h4>
@@ -276,18 +276,14 @@ class RPSLS extends Component {
 
           <div class="col s4 ai">
             <h4 className="ai-score">
-              <span style={{ color: "#265d7c" }}>AI
-                <span style={{ color: "#ea3e18" }}> Score: </span>
-                <span style={{ color: "#265d7c" }}>
-                  {this.state.ai_score}
-                </span>
-              </span>
+                <span style={{ color: "#ea3e18" }}>AI Score: {this.state.ai_score}</span>
+            
 
             </h4>
             <h4 className="user-choice-lable" style={{ color: "#ea3e18" }}>{this.state.setComputerChoice}</h4>
 
             <h4 className="ai-choice">
-              <img src={this.state.imgAI} alt="" class="circle responsive-img">
+              <img src={this.state.imgAI} alt="" className="circle responsive-img">
               </img>
             </h4>
           </div>
@@ -298,35 +294,35 @@ class RPSLS extends Component {
 
             <div style={{ display: "block", marginLeft: "auto", marginRight: "auto"}}>
               <button className='button' onClick={() => this.handleClick('Rock', rock)}>
-                <img src={rock} alt="" class="circle responsive-img">
+                <img src={rock} alt="rock" className="circle responsive-img">
                 </img>
               </button>
             </div>
 
             <div style={{ display: "block", marginLeft: "auto", marginRight: "auto"}}>
               <button className='button' onClick={() => this.handleClick('Paper', paper)}>
-                <img src={paper} alt="" class="circle responsive-img">
+                <img src={paper} alt="paper" className="circle responsive-img">
                 </img>
               </button>
             </div>
 
             <div style={{ display: "block", marginLeft: "auto", marginRight: "auto"}}>
               <button className='button' onClick={() => this.handleClick('Scissors', scissors)}>
-                <img src={scissors} alt="" class="circle responsive-img">
+                <img src={scissors} alt="scissors" className="circle responsive-img">
                 </img>
               </button>
             </div>
 
             <div style={{ display: "block", marginLeft: "auto", marginRight: "auto"}}>
               <button className='button' onClick={() => this.handleClick('Lizard', lizard)}>
-                <img src={lizard} alt="" class="circle responsive-img">
+                <img src={lizard} alt="lizard" className="circle responsive-img">
                 </img>
               </button>
             </div>
 
             <div style={{ display: "block", marginLeft: "auto", marginRight: "auto"}}>
               <button className='button' onClick={() => this.handleClick('Spock', spock)}>
-                <img src={spock} alt="" class="circle responsive-img">
+                <img src={spock} alt="spock" className="circle responsive-img">
                 </img>
               </button>
             </div>
@@ -341,14 +337,7 @@ class RPSLS extends Component {
         </div>
 
         </div>
-
-
-        
-
-        
-
-
-
+  
       </React.Fragment>
     );
 
