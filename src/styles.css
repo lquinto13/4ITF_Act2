@@ -29,6 +29,13 @@ html, body {
     
 }
 
+.action{
+    display: flex;
+    justify-content: center;   
+    padding-top:15%;
+    font-size: 40px;
+}
+
 .ai-score{
     display: flex;
     justify-content: center;   
@@ -66,20 +73,22 @@ html, body {
     justify-content: center;
  }
  .result-button{
+    font-family: 'Anton', sans-serif;
+    font-size: 30px;
     margin-top: 40px;
-    width: 30%;
+    width: 20%;
     height: 50px;
     background-color: white;
     border-radius: 20%;
-  border: none;
-  color: black;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 16px;
+    border: none;
+    color: #265d7c;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 16px;
  }
 
  .result-button:focus{
