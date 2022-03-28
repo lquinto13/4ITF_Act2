@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import RPSLS from './components/RPSLS';
 import 'materialize-css/dist/css/materialize.min.css';
 

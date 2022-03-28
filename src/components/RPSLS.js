@@ -1,4 +1,4 @@
-import React, { useEffect, Component } from 'react'
+import React, { Component } from 'react'
 import './../styles.css'
 import spock from '../assets/spock.png';
 import scissors from '../assets/scissors.png';
@@ -87,7 +87,6 @@ class RPSLS extends Component {
           case 'ScissorsRock':
             this.state.ai_score++;
             this.setState({result:"You Lost!"})
-
             break
           case 'RockRock':
           case 'SpockSpock':
@@ -95,6 +94,8 @@ class RPSLS extends Component {
           case 'Scissorsscissors':
           case 'PaperPaper':
             this.setState({result:"Draw!"})
+            break
+          default:
             break
         }
       }
